@@ -47,6 +47,10 @@ router.post("/", async (req, res) => {
     let senderId = body.entry[0].messaging[0].sender.id;
     let query = body.entry[0].messaging[0].message.text;
     let result = await GetUserDetails(senderId);
+    const imageUrl = body.entry[0].messaging[0].message.attachments;
+    if (imageUrl) {
+      query = imageUrl[0].payload.url;
+    }
     console.log(query);
     console.log(result);
     console.log(senderId);
