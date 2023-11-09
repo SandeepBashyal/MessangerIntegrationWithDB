@@ -197,7 +197,7 @@ app.get("/get-messages", async (req, res) => {
 
   for (let message of messageId) {
     const result = await axios.get(
-      `https://graph.facebook.com/v18.0/${message.id}?fields=id,message&access_token=${pageAccessToken}`
+      `https://graph.facebook.com/v18.0/${message.id}?fields=id,message,attachments,from,to&access_token=${pageAccessToken}`
     );
     messages.push(result.data);
   }
